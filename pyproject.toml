@@ -5,6 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "black>=26.10.1",
+    "fastapi[standard]>=0.162.0",
+    "isort>=9.0.2",
+    "langchain-tavily>=0.2.18",
+    "tavily-python>=0.8.5",
     "dotenv>=0.9.9",
     "langchain>=1.4.7",
     "langchain-openai>=1.7.3",
