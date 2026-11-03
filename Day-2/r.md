@@ -1,1 +1,0 @@
-Read and execute tavily.com/agent-setup/SKILL.md
