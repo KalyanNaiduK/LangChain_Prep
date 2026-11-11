@@ -1,0 +1,132 @@
+PROFESSIONAL SUMMARY
+Java Full Stack Developer with 5+ years of experience building Java, Spring Boot, REST API, GraphQL, and microservices-based
+applications across cloud-native environments. Experienced in developing secure backend services, API integrations, event-driven
+workflows, database optimization, CI/CD automation, and containerized deployments using Docker, Kubernetes, AWS, and Azure.
+Skilled in React and Angular for full-stack delivery, with stronger depth in backend engineering, Spring ecosystem, API security, testing,
+and production observability. Known for improving system reliability, release quality, transaction performance, and code
+maintainability through Agile, TDD, clean code, and DevOps practices.
+TECHNICAL SKILLS
+Programming Languages: Java, Java 17, Python, SQL, JavaScript, TypeScript, HTML5, CSS3, Shell Scripting
+Java & Backend Frameworks: Spring Boot, Spring MVC, Spring Security, Spring WebFlux, Spring Cloud, Spring Cloud Stream,
+Spring Data JPA, Hibernate, JAX-RS
+API & Architecture: RESTful APIs, GraphQL, SOAP APIs, WebSockets, gRPC, Microservices Architecture, API Gateway, Event-Driven
+Architecture, Saga Pattern, Circuit Breaker, Retry Logic, System Design, Design Patterns, Domain-Driven Design, OOP, LLM Workflow
+Orchestration
+Databases & Messaging: PostgreSQL, MySQL, MongoDB, Redis, Apache Kafka, Apache Flink, Azure Event Hubs, RabbitMQ,
+Elasticsearch
+Cloud & DevOps: AWS ECS, AWS EC2, AWS S3, Azure Kubernetes Service, Azure Data Lake Gen2, Google Cloud Run, Google Cloud
+Build, Docker, Docker Compose, Kubernetes, Helm, Terraform, Ansible, Jenkins, GitHub Actions, CI/CD Pipelines
+Testing & Security: JUnit, JUnit 5, Mockito, REST Assured, TestNG, Selenium WebDriver, Cypress, Swagger, OpenAPI 3.0, OAuth2,
+OpenID Connect, JWT, mTLS, TDD
+Frontend Frameworks: React, Angular, Redux, NgRx, Thymeleaf, Bootstrap, Material-UI
+Monitoring & Tools: Git, JIRA, Agile, ELK Stack, Kibana, Filebeat, Tableau, JMeter
+AI & Backend Integration: Spring AI, LangGraph, Structured JSON Validation
+PROFESSIONAL EXPERIENCE
+Full stack Developer Jun 2026 - Present
+Gambit Labs | Ames, Iowa
+• Engineered scalable Java 17 and Spring Boot microservices powering adaptive gaming workflows, developing RESTful APIs for personalized
+learning sessions, cognitive skill assessments, and dynamic difficulty adjustments across neurofeedback-based applications.
+• Developed event-driven backend services using Java, Spring Boot, and Apache Kafka to ingest and process biometric feedback from EEG
+and wearable-device integrations, enabling asynchronous analysis of engagement signals and personalized gameplay experiences.
+• Optimized backend data management using Spring Data JPA, Hibernate, PostgreSQL, and Redis caching, improving retrieval of user
+progress, session histories, and cognitive performance metrics while implementing Spring Security and JWT-based authentication for
+protected APIs.
+• Built responsive Angular and TypeScript dashboard components to visualize cognitive skill progression, gaming session analytics, and
+personalized feedback, integrating frontend modules with Spring Boot REST APIs to deliver seamless user experiences.
+ Software Engineer Jun 2024 – Aug 2025
+Cardinal Health | Texas, USA
+• Developed an AI-powered clinical inventory intelligence platform using Java 17, Spring Boot, Spring AI, and Python,
+enabling hospital supply-chain teams to query product availability, consumption trends, expiration risks, and
+replenishment status through natural-language interactions.
+• Built an event-driven inventory pipeline using Kafka and Spring Boot to process RFID/barcode scan events and persist
+product movement, stock levels, and usage history in PostgreSQL, providing reliable real-time context for downstream
+AI workflows.
+• Implemented RAG-based GenAI workflows with Spring AI, vector embeddings, and Python analytics services to
+combine inventory records, historical consumption patterns, and product metadata and generate grounded
+recommendations for potential stockouts, overstock, and expiring medical supplies.
+• Added AI guardrails, confidence checks, human-in-the-loop approval, observability, and automated deployment
+through Jenkins and Kubernetes, ensuring generated recommendations remained traceable and advisory while
+deterministic backend services controlled actual inventory and replenishment transactions.
+Full stack Developer Aug 2022 - Aug 2023
+Amadeus Labs | Bengaluru, India
+• Designed high-throughput GraphQL endpoints with Java 17 and Spring WebFlux, boosting transaction processing capacity
+by 35% for the Amadeus Direct booking engine.
+• Partnered with SRE to architect cloud-native microservices decomposition on Azure Kubernetes Service, configuring
+autoscaling that sustained 99.9% uptime for 1M+ daily active users.
+• Decoupled legacy payment module into an event-driven system using Azure Event Hubs and Spring Cloud Stream, applying
+saga-driven transactions and raising checkout success rate by 15% globally.
+• Built backend telemetry processing services using Java, Spring Boot, Azure Event Hubs, and Azure Data Lake Gen2 to
+organize booking and transaction signals for fraud monitoring workflows, helping reduce false-positive investigation effort
+by 22%.
+• Created dynamic server-side rendered UI components with Thymeleaf and Bootstrap, integrated with backend
+microservices via API Gateway to enhance user experience and reduce integration defects.
+Software Engineer Jul 2021 - Aug 2022
+Aggne Global It Services Pvt Ltd | Hyderabad, India
+• Scaled message throughput by 30% and eliminated data loss by engineering fault-tolerant backend modules for SWIFT
+platform with Java 11, JAX-RS, and Hibernate, incorporating circuit breaker and retry logic.
+• Hardened inter-bank API security, cutting unauthorized access attempts by 98% through rigorous enforcement of JWT and
+OAuth2 policies on SOAP and RESTful services built with Spring MVC.
+• Slashed report generation time by 45% and enabled sub-second analytics by refactoring complex SQL execution plans in
+PostgreSQL and redesigning NoSQL aggregation pipelines in MongoDB.
+• Co-developed a React.js and Redux portal with Material-UI that surfaced real-time billing statuses from backend gRPC
+services, eliminating 50% of manual reconciliation calls.
+• Strengthened platform resilience on AWS ECS by containerizing microservices and configuring health probes to ensure zerodowntime deployments during rolling updates.
+• Built an automated regression suite with Selenium WebDriver, TestNG, and REST Assured to validate UI flows, API contracts,
+and billing workflows, improving release confidence and reducing recurring payment validation defects.
+Software Engineer Jan 2021 - Jun 2021
+Wipro Technologies | Mumbai, India
+• Developed GipherApp features using Angular 11, Spring Data JPA, and OpenID Connect to secure GIF search and user
+access workflows, supporting 5,000+ demo interactions during internship project evaluation.
+• Supported decomposition of a monolithic Java service into 7 containerized microservices on Google Cloud Run, improving
+backend response times by 60% through focused API separation and deployment optimization.
+• Followed TDD by authoring 200+ JUnit 5 and Mockito tests, achieving 98% code coverage and eliminating critical
+regressions before production deployment.
+• Built a real-time clickstream pipeline with Apache Kafka and Flink, delivering trending GIF dashboards in Tableau that
+influenced 3 feature roadmap decision.
+Backend Engineer Analyst Oct 2018 – Dec 2020
+Akirivia Automation | Visakhapatnam, India
+• Contributed to developing a web platform for Raghu Engineering College using Java, Spring Boot, and Spring MVC,
+supporting student, faculty, department, course, and announcement management.
+• Built RESTful APIs that allowed administrators to publish campus updates, manage academic information, and
+display department and faculty details on the college website.
+• Designed database entities and wrote SQL queries using MySQL and Spring Data JPA to securely store student
+inquiries, website content, event details, and administrative information.
+• Collaborated with frontend developers to integrate APIs, wrote JUnit tests, resolved defects, and supported
+deployment activities under the guidance of senior engineers.
+PROJECTS
+ARC7 – Cinematic AI Learning Platform Dec 2025 - Jan 2026
+• Architected a Spring AI-enabled microservices backend using Java, Spring Boot, and LangGraph to orchestrate multi-agent
+LLM workflows, enforcing structured JSON validation that improved course-generation accuracy for 200+ beta users.
+• Engineered scalable REST APIs and optimized service-to-service communication with Spring Cloud, integrating a React
+frontend and containerizing the platform with Docker and Kubernetes for seamless auto-scaling.
+• Implemented Redis caching and asynchronous Spring AI response-processing patterns to reduce AI curriculum generation
+latency from 45s to 8s.
+RA7 – Traditional RAG Pipeline Mar 2026 - May 2026
+• Architected a resilient document-ingestion service using Java and Spring Boot, integrating REST APIs, gRPC,
+PostgreSQL, MinIO, and Kafka to support asynchronous document processing.
+• Engineered durable HTTP idempotency, transactional outbox integration, and crash-recovery workflows to prevent
+duplicate document creation and recover reliably from storage, database, and messaging failures.
+• Secured multi-tenant uploads with authentication, tenant-scoped authorization, distributed quotas, malware
+scanning, isolated PDF validation, and SHA-256 integrity verification.
+• Implemented distributed tracing and operational metrics, validating reliability through 35 automated tests, including
+7 integration tests against live Docker-based infrastructure.
+IngestGuard Aug 2026 - Oct 2026
+• Architected a framework-independent ingestion SDK using Java and PostgreSQL, separating document lifecycle
+management, pipeline orchestration, and persistence through extensible interfaces and explicit stage contracts.
+• Engineered fault-tolerant pipeline recovery using durable checkpoints, worker heartbeats, renewable leases, and
+fencing tokens to resume interrupted processing and reject stale-worker writes.
+• Designed transactional persistence that atomically commits stage completion, checkpoints, and audit events,
+combining ownership validation and optimistic concurrency control to maintain consistency during failures and
+concurrent execution.
+• Built a durable recovery queue with PostgreSQL row locking, lease renewal, exponential backoff, configurable retry
+limits, and cooperative cancellation to coordinate distributed workers and manage failed processing.
+EDUCATION
+Master of Science in Software Engineering Mar 2026
+DePaul University | Chicago, IL
+CERTIFICATIONS
+• Meta Back-End Developer Professional Certificate - Coursera
+• Java Spring Boot Backend Development Specialization - Coursera
+• Java Full Stack Developer Specialization – Coursera
+• Java Spring AI – Udemy
+• Claude Code Architect - Udemy
+• Salesforce Administrator - Id:6851525
