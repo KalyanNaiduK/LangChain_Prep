@@ -1,12 +1,13 @@
 from langchain_openai import OpenAIEmbeddings
-# from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_postgres import PGVectorStore,PGEngine
 from dotenv import load_dotenv
 load_dotenv()
+import asyncio
 
-def load_document(filename:str):
+
+async def load_document(filename:str):
     print("Starting Ingestion .....")
     
     with open(file=filename,mode="r",encoding="utf-8") as f:
@@ -24,7 +25,12 @@ def load_document(filename:str):
     embeddings = OpenAIEmbeddings()
     # resultant_embeddings = embeddings.embed_documents([text.page_content for text in texts[0:5]])
     print("Storing in Db......")
-    db_engine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:6024/vectordb")
-    PGVectorStore.afrom_documents(documents=texts,embedding=embeddings,engine=db_engine,table_name="my_vector_collection")
+    db_engine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:5432/vectordb")
+    await db_engine.ainit_vectorstore_table(
+    table_name="my_vector_collection",
+    vector_size=1536,
+    schema_name="public",)
+    store = await PGVectorStore.afrom_documents(documents=texts,embedding=embeddings,engine=db_engine,table_name="my_vector_collection",schema_name="public")
     print("Ready ........")
-load_document("Day-5/RAG/docs/apple.txt")
+    
+asyncio.run(load_document("Day-5/RAG/docs/apple.txt"))
