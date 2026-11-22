@@ -21,9 +21,15 @@ os.environ["SSL_CERT_FILE"] = certifi.where()
 os.environ["REQUEST_C_BUNDLE"] = certifi.where()
 
 
-embeddingEngine = OpenAIEmbeddings(show_progress_bar=True,chunk_size=50,retry_min_seconds=10)
-dbEngine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:5432/vectordb")
-vector_store = PGVectorStore.create_sync(engine=dbEngine,embedding_service=embeddingEngine,table_name="my_vector_collection_v3")
+async def init_db():
+    embeddingEngine = OpenAIEmbeddings(show_progress_bar=True,chunk_size=50,retry_min_seconds=10)
+    dbEngine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:5432/vectordb")
+    await dbEngine.ainit_vectorstore_table(
+        table_name="my_vector_collection_v3",
+        vector_size=1536,
+        schema_name="public")
+    vector_store = PGVectorStore.create_sync(engine=dbEngine,embedding_service=embeddingEngine,table_name="my_vector_collection_v3")
+    return vector_store
 
 tavily_extact = TavilyExtract()
 tavily_map = TavilyMap(max_depth=5,max_breadth=20,max_pages = 1000)
@@ -31,11 +37,13 @@ tavily_crawl = TavilyCrawl()
 
 async def index_split_documents(split_documents:List[Document],batchsize:int = 50):
     
+    vs = await init_db()
+    
     batches = [split_documents[i:i+batchsize] for i in range(0,len(split_documents),batchsize)]
 
     async def add_batch(batch:List[Document],batchNumber):
         try:
-            await vector_store.aadd_documents(batch)
+            await vs.aadd_documents(batch)
             log_success(f"Vector Store indexing: Successfully indexed batch {batchNumber}/{len(batches)} {len(batch)} documents")
         except Exception as e:
             log_error(f"Vector Store indexing: Failed to index batch {batchNumber} - {e}")
@@ -43,13 +51,15 @@ async def index_split_documents(split_documents:List[Document],batchsize:int = 5
         return True
     
     log_info("Processing Batches Concurently")
-    tasks = [add_batch(batch,i+1) for i,batch in enumerate(batches)]
+    tasks = [add_batch(batch,i+1) for i,batch in enumerate(batches)] #list of add_batch functions
     results = await asyncio.gather(*tasks,return_exceptions=True)
     
     successfull = sum(1 for result in results if result is True)
     
     if successfull==len(batches):
-        log_info()
+        log_info("Vector Store indexing: Document indexing Successfull to vector DB")
+    else:
+        log_warning("Vector Store indexing: Document indexing Partially failed......")
     
 async def main():
     log_header("DOCUMEMTATION INGESTION PIPELINE")
@@ -70,6 +80,11 @@ async def main():
     log_success(f"Text Splitter Created {len(splitted_documents)} chunks from {len(all_docs)} documents")
     
     log_header("DOCUMENT INDEXING PHRASE")
+    
+    await index_split_documents(splitted_documents,500)
+    
+    
+    log_header("PIPELINE COMPLETE")
     
 if __name__ == "__main__":
     asyncio.run(main())

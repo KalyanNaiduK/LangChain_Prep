@@ -29,7 +29,7 @@ async def load_document(filename:str):
     await db_engine.ainit_vectorstore_table(
     table_name="my_vector_collection_v2",
     vector_size=1536,
-    schema_name="public",)
+    schema_name="public")
     store = await PGVectorStore.afrom_documents(documents=texts,embedding=embeddings,engine=db_engine,table_name="my_vector_collection_v2",schema_name="public")
     print("Ready ........")
     
