@@ -15,9 +15,13 @@ llm = ChatOpenAI(model="gpt-5")
 
 embeddingEngine  = OpenAIEmbeddings()
 dbEngine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:5432/vectordb")
-vector_store = PGVectorStore.create_sync(engine=dbEngine,embedding_service=embeddingEngine,table_name="my_vector_collection_v2")
+vector_store = PGVectorStore.create_sync(engine=dbEngine,embedding_service=embeddingEngine,table_name="my_vector_collection_v3")
 
 retriver = vector_store.as_retriever(search_kwargs={"k":3})
+
+# def re(query):
+#     reponse = retriver.invoke(query)
+#     return reponse
 
 def fomat_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
@@ -36,5 +40,11 @@ def create_retriveal_chain_with_lecl():
 
 
 retriver_chain = create_retriveal_chain_with_lecl()
-response = retriver_chain.invoke({"user_query":"Tell me about Sai in 50 words , how much do you rate him for a Software engineering position."})
+response = retriver_chain.invoke({"user_query":"Give me an overview of langgraph in 50 words "})
 print(response)
+
+# response = re("Give me an overview of langgraph in 50 words")
+
+# for res in response:
+#     print(len(res.page_content))
+#     print("\n")
