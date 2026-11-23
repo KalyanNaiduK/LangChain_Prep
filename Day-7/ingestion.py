@@ -22,7 +22,7 @@ os.environ["REQUEST_C_BUNDLE"] = certifi.where()
 
 
 async def init_db():
-    embeddingEngine = OpenAIEmbeddings(show_progress_bar=True,chunk_size=50,retry_min_seconds=10)
+    embeddingEngine = OpenAIEmbeddings(model="text-embedding-3-small",show_progress_bar=True,chunk_size=50,retry_min_seconds=10)
     dbEngine = PGEngine.from_connection_string(url="postgresql+psycopg://postgres:password@localhost:5432/vectordb")
     await dbEngine.ainit_vectorstore_table(
         table_name="my_vector_collection_v3",
@@ -32,15 +32,15 @@ async def init_db():
     return vector_store
 
 tavily_extact = TavilyExtract()
-tavily_map = TavilyMap(max_depth=5,max_breadth=20,max_pages = 1000)
+tavily_map = TavilyMap(max_depth=1,max_breadth=0,max_pages = 1000)
 tavily_crawl = TavilyCrawl()
 
-async def index_split_documents(split_documents:List[Document],batchsize:int = 50):
+async def index_split_documents(split_documents:List[Document],batchsize:int = 500):
     
     vs = await init_db()
     
     batches = [split_documents[i:i+batchsize] for i in range(0,len(split_documents),batchsize)]
-
+    log_info(f"Created {len(batches)} batches with each batch average size is : {len(batches[0])}",Colors.UNDERLINE)
     async def add_batch(batch:List[Document],batchNumber):
         try:
             await vs.aadd_documents(batch)
@@ -50,9 +50,16 @@ async def index_split_documents(split_documents:List[Document],batchsize:int = 5
             return False
         return True
     
-    log_info("Processing Batches Concurently")
-    tasks = [add_batch(batch,i+1) for i,batch in enumerate(batches)] #list of add_batch functions
-    results = await asyncio.gather(*tasks,return_exceptions=True)
+    log_info("Processing Batches")
+    # tasks = [add_batch(batch,i+1) for i,batch in enumerate(batches)] #list of add_batch functions concurrent processing of batches
+    # below is the code for sequentially processing the batches due to ratelimiting issue 
+    results = []
+    for batchNumber,batch in enumerate(batches,start=1):
+        result = await add_batch(batch,batchNumber)
+        results.append(result)
+        
+        if batchNumber<len(batches):
+            await asyncio.sleep(90)
     
     successfull = sum(1 for result in results if result is True)
     
