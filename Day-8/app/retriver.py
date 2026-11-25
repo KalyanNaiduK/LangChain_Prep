@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from langchain.messages import ToolMessage
 from langchain.tools import tool
 from langchain.agents import create_agent
 from langchain_core.prompts import ChatPromptTemplate,SystemMessagePromptTemplate,HumanMessagePromptTemplate
@@ -14,6 +15,19 @@ def init_db():
     return vector_store 
 
 store = init_db()
+
+def pushArtifactsToDownstreamService(artifacts):
+    print("***"*15)
+    print("Starting to log sources ............")
+    print("***"*15)
+    sources = "\n\n".join([document.metadata['source'] for document in artifacts])
+    with open("sources.txt","w") as f:
+        f.write(sources)
+        
+    print("***"*15)
+    print("Logged Sources Successfully!!!!")
+    print("***"*15)
+
 
 @tool(response_format="content_and_artifact")
 def search_for_documentations(query:str):
@@ -43,6 +57,12 @@ def run_llm(Question:str):
     agent = create_agent(model="gpt-5",tools=[search_for_documentations])    
 
     result = agent.invoke(final_prompt)
-    print("")
+    print("====="*15)
+    print(result['messages'][-1].content)
+    print("====="*15)
+
+    for mesType in result['messages']:
+        if isinstance(mesType,ToolMessage):
+            pushArtifactsToDownstreamService(mesType.artifact)
 
 run_llm("What are deep agents in langchain ? ")
